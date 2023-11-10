@@ -91,11 +91,7 @@ Puedes usar librerías adicionales a las del framework si lo necesitas, pero deb
 ### Valorable (Opcional)
 
 - Uso de herramientas de análisis estático:
-
   - Por ejemplo, **PHPStan** en modo máximo.
-
 - Uso de herramientas de estilo de código:
-
   - Por ejemplo, **PHP CS Fixer** en modo @Symfony.
-
 - Ofrecer un **Swagger/OpenAPI**.
