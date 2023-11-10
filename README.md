@@ -15,7 +15,7 @@ Empezaremos con algo sencillo, sólo queremos poder:
 
 ### Acceso al Contenido
 
-Vamos a necesitar acceder al contenido desde otras aplicaciones, lo que nos requiere exponer una API. Como base de datos deberás utilizar MariaDB, puedes:
+Vamos a necesitar acceder al contenido desde otras aplicaciones, lo que nos requiere exponer una API. Como base de datos deberás utilizar MariaDB/MySQL, puedes:
 
 1. Montarla por separado.
 2. Incluir la configuración de docker-compose directamente en el proyecto.
