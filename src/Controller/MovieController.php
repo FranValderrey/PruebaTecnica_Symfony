@@ -7,7 +7,6 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpClient\HttpClient;
 
@@ -48,5 +47,25 @@ class MovieController extends AbstractController
         $this->entityManager->flush();
 
         return new JsonResponse(['message' => 'Movie created successfully'], JsonResponse::HTTP_CREATED);
+    }
+
+    #[Route('/movies', name: 'list_movies', methods: ['GET'])]
+    public function listMovies(EntityManagerInterface $entityManager): JsonResponse
+    {
+        // Obtener la lista de películas desde tu base de datos
+        $movies = $entityManager->getRepository(Movie::class)->findAll();
+
+        // Transformar la lista de películas en un formato adecuado para JSON
+        $formattedMovies = [];
+        foreach ($movies as $movie) {
+            $formattedMovies[] = [
+                'id' => $movie->getId(),
+                'name' => $movie->getName(),
+                'full_details' => $movie->getFullDetails(),
+            ];
+        }
+
+        // Devolver una respuesta JSON con la lista de películas
+        return $this->json($formattedMovies, JsonResponse::HTTP_OK);
     }
 }
